@@ -4,9 +4,14 @@ from numpy._typing import NDArray
 
 from neural_net.functions.abstract_function import AbstractFunction, abstractmethod
 
-class AbstractError(AbstractFunction):
+class AbstractLoss(AbstractFunction):
 
-    @abstractmethod
     @staticmethod
-    def fun(y_true: Union[float, NDArray],y_hat: Union[float, NDArray]) -> float:
+    @abstractmethod
+    def fun(y_true: Union[float, NDArray],y_pred: Union[float, NDArray]) -> float:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def derivative(y_true: Union[float, NDArray], y_pred: Union[float, NDArray]) -> float:
         pass
